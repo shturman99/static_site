@@ -6,7 +6,6 @@ from markdown_inline import (
     extract_markdown_links,
     extract_markdown_images,
     text_to_nodes,
-    markdwon_to_blocks,
 )
 
 from textnode import TextNode, TextType
@@ -174,26 +173,6 @@ class TestInlineMarkdown(unittest.TestCase):
                 TextNode("code", TextType.CODE),
                 TextNode(".", TextType.TEXT),
             ], nodes )
-
-    def test_markdown_to_blocks(self):
-        text = """this is plain text without any md.
-
-this is **bold** text. and second block.
-
-this is third blockk                     
-
-
-
-
-
-"""
-        blocks = markdwon_to_blocks(text)
-        self.assertListEqual(
-            [
-                "this is plain text without any md.",
-                "this is **bold** text. and second block.",
-                "this is third blockk",   
-            ], blocks )
 
 
 if __name__ == "__main__":

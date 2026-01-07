@@ -47,3 +47,12 @@ def block_to_block_type(block: str) -> BlockType:
         return BlockType.ORDERED_LIST
 
     return BlockType.PARAGRAPH
+    
+
+def extract_titile(markdown_text: str) -> str:
+    lines = markdown_text.split("\n")
+    for line in lines:
+        if line.startswith("# "):
+            return line[2:].strip()
+        else:
+            raise Exception("No title found in markdown")

@@ -90,16 +90,8 @@ def text_to_nodes(text):
     nodes = split_nodes_image(nodes)
     nodes = split_nodes_link(nodes)
     nodes = split_nodes_delimiter(nodes, "**", TextType.BOLD)
-    nodes = split_nodes_delimiter(nodes, "*", TextType.ITALIC)
+    nodes = split_nodes_delimiter(nodes, "_", TextType.ITALIC)
     nodes = split_nodes_delimiter(nodes, "`", TextType.CODE)
+    
     return nodes
 
-def markdwon_to_blocks(text):
-    blocks = list(map(lambda x: x.strip(), text.split("\n\n")))
-    out = []    
-    for block in blocks:
-        if block == "":
-            continue
-        else:
-            out.append(block)
-    return out

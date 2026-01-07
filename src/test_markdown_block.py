@@ -3,7 +3,8 @@ from markdown_blocks import (
 
     markdown_to_blocks,
     block_to_block_type,
-    BlockType
+    BlockType,
+    extract_titile
     
 )
 
@@ -69,6 +70,11 @@ this is third blockk
         block2 = block_to_block_type(text2)
         self.assertEqual(block2, BlockType.PARAGRAPH)
         self.assertEqual(block1, BlockType.ORDERED_LIST)
+    
+    def test_extract_title(self):
+        text = "# This is the title"
+        title = extract_titile(text)
+        self.assertEqual(title, "This is the title")
 
 if __name__ == "__main__":
     unittest.main()
