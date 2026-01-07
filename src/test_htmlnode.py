@@ -12,8 +12,8 @@ class TestHTMLNode(unittest.TestCase):
     def test_props_to_html_with_props(self):
         node = HTMLNode(props=[("class", "container"), ("id", "main")])
         props_html = node.props_to_html()
-        self.assertIn('class=container', props_html)
-        self.assertIn('id=main', props_html)
+        self.assertIn('class="container"', props_html)
+        self.assertIn('id="main"', props_html)
 
     def test_props_to_html_without_props(self):
         node = HTMLNode()
@@ -29,19 +29,7 @@ class TestHTMLNode(unittest.TestCase):
         node = LeafNode("p", "Hello, world!")
         self.assertEqual(node.to_html(), "<p>Hello, world!</p>")
 
-    def test_to_html_with_children(self):
-        child_node = LeafNode("span", "child")
-        parent_node = ParentNode("div", [child_node])
-        self.assertEqual(parent_node.to_html(), "<div><span>child</span></div>")
-
-    def test_to_html_with_grandchildren(self):
-        grandchild_node = LeafNode("b", "grandchild")
-        child_node = ParentNode("span", [grandchild_node])
-        parent_node = ParentNode("div", [child_node])
-        self.assertEqual(
-            parent_node.to_html(),
-            "<div><span><b>grandchild</b></span></div>",
-        )
+ 
     def test_to_html_with_children(self):
         child_node = LeafNode("span", "child")
         parent_node = ParentNode("div", [child_node])

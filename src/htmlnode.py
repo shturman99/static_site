@@ -13,7 +13,7 @@ class HTMLNode():
         out = f""
         if self.props:
             for key,val in self.props:
-                out += f' {key}={val} '
+                out += f' {key}="{val}" '
         else:
             return ""
         return out

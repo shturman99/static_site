@@ -50,6 +50,7 @@ def generate_page(from_path, template_path, to_path, basepath):
     final_content = template_content.replace("{{ Title }}", title)
     final_content = final_content.replace("{{ Content }}", content)
     final_content = final_content.replace(f'href="/', f'href="{basepath}')
+    final_content = final_content.replace(f'href=/', f'href={basepath}')
     final_content = final_content.replace(f'src="/', f'src="{basepath}')
     final_content = final_content.replace(f'src=/', f'src={basepath}')
 
@@ -73,10 +74,18 @@ def generate_pages_recursively(from_path, template_path, to_path, basepath):
             print(f"Created directory {p}")
             generate_pages_recursively(s, template_path, p, basepath)
         else:
-            if item.endswith('.md'):
-                to_file_path = os.path.join(to_path, item[:-3] + '.html')
-                print(f"Generating HTML page {to_file_path} from markdown {s}")
+          
+            if item.endswith(".md"):
+                name = item[:-3]  
+                if name == "index":
+                    to_file_path = os.path.join(to_path, "index.html")
+                else:
+                    out_dir = os.path.join(to_path, name)
+                    os.makedirs(out_dir, exist_ok=True)
+                    to_file_path = os.path.join(out_dir, "index.html")
+
                 generate_page(s, template_path, to_file_path, basepath)
+
             else:
                 shutil.copy2(s, p)
                 print(f"Copied {s} to {p}")
