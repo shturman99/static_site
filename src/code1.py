@@ -20,5 +20,56 @@ def split_nodes_delimiter(old_nodes : list[TextNode], delimiter : str, text_type
                     new_nodes.append(TextNode(partition[i], text_type))
 
     return new_nodes
-        
-        
+
+import re
+def extract_markdown_imagies_from_text(text):
+    pattern = r'!\[([^\]]*)\]\(([^)]+)\)'
+    matches = re.findall(pattern, text)
+    images = [{'alt_text': alt_text, 'url': url} for alt_text, url in matches]
+    return images
+
+def split_nodes_image(old_nodes : list[TextNode]):
+    new_nodes = []
+    pattern = r'!\[([^\]]*)\]\(([^)]+)\)'
+
+    for node in old_nodes:
+        if node.text_type != TextType.TEXT:
+            new_nodes.append(node)
+        else:
+            parts = re.split(pattern, node.text)
+            i = 0
+            while i < len(parts):
+                if i % 3 == 0:
+                    if parts[i] != "":
+                        new_nodes.append(TextNode(parts[i], TextType.TEXT))
+                elif i % 3 == 1:
+                    alt_text = parts[i]
+                    url = parts[i + 1]
+                    new_nodes.append(TextNode(f"![{alt_text}]({url})", TextType.IMAGE))
+                    i += 1
+                i += 1
+
+    return new_nodes
+
+def split_nodes_link(old_nodes : list[TextNode]):
+    new_nodes = []
+    pattern = r'\[([^\]]*)\]\(([^)]+)\)'
+
+    for node in old_nodes:
+        if node.text_type != TextType.TEXT:
+            new_nodes.append(node)
+        else:
+            parts = re.split(pattern, node.text)
+            i = 0
+            while i < len(parts):
+                if i % 3 == 0:
+                    if parts[i] != "":
+                        new_nodes.append(TextNode(parts[i], TextType.TEXT))
+                elif i % 3 == 1:
+                    link_text = parts[i]
+                    url = parts[i + 1]
+                    new_nodes.append(TextNode(f"[{link_text}]({url})", TextType.LINK))
+                    i += 1
+                i += 1
+
+    return new_nodes

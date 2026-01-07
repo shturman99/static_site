@@ -40,5 +40,31 @@ class TestCode(unittest.TestCase):
             new_nodes,
         )
 
+    def test_extract_markdown_imagies_from_text(self):
+        text = "Here is an image ![alt text](http://example.com/image.png) in markdown."
+        images = extract_markdown_imagies_from_text(text)
+        expected = [{'alt_text': 'alt text', 'url': 'http://example.com/image.png'}]
+        self.assertEqual(images, expected)
+
+    def test_split_nodes_image(self):
+        node = TextNode("this is an image in markdown ![alt text](http://example.com/image.png) end of text", TextType.TEXT)
+        new_nodes = split_nodes_image([node])
+        expected = [
+            TextNode("this is an image in markdown ", TextType.TEXT),
+            TextNode("![alt text](http://example.com/image.png)", TextType.IMAGE),
+            TextNode(" end of text", TextType.TEXT),
+        ]
+        self.assertEqual(expected, new_nodes)
+
+    def test_split_nodes_link(self):
+        node = TextNode("this is a [link text](http://example.com) end of text", TextType.TEXT)
+        new_nodes = split_nodes_link([node])
+        expected = [
+            TextNode("this is a ", TextType.TEXT),
+            TextNode("[link text](http://example.com)", TextType.LINK),
+            TextNode(" end of text", TextType.TEXT),
+        ]
+        self.assertEqual(expected, new_nodes)
+
 if __name__ == "__main__":
     unittest.main()
