@@ -4,6 +4,7 @@ import sys
 
 def main():
     basepath = sys.argv[1] if len(sys.argv) > 1 else "/"
+    print(f"Using basepath: {basepath}")
 
     public_dir = "docs"
     static_dir = "static"

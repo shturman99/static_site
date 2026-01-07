@@ -51,6 +51,7 @@ def generate_page(from_path, template_path, to_path, basepath):
     final_content = final_content.replace("{{ Content }}", content)
     final_content = final_content.replace(f'href="/', f'href="{basepath}')
     final_content = final_content.replace(f'src="/', f'src="{basepath}')
+    final_content = final_content.replace(f'src=/', f'src={basepath}')
 
     with open(to_path, 'w') as to_file:
         to_file.write(final_content)
