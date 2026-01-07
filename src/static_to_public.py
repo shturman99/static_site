@@ -1,10 +1,9 @@
 import os
 import shutil
-
 from markdown_blocks import extract_titile
 from markdown_to_html import markdown_to_html_node
 
-def static_to_public(static_dir='static', public_dir='public'):
+def static_to_public(static_dir='static', public_dir='docs'):
     if not os.path.exists(public_dir):
         os.makedirs(public_dir, exist_ok=True)
     else:
@@ -29,7 +28,7 @@ def recursive_copy(static_dir, public_dir):
                 print(f"Copied {s} to {p}")
 
 
-def generate_page(from_path, template_path, to_path):
+def generate_page(from_path, template_path, to_path, basepath):
     print(f"Generating page from {from_path} using template {template_path} to {to_path}")
 
     with open(template_path, 'r', encoding='utf-8') as template_file:
@@ -50,13 +49,15 @@ def generate_page(from_path, template_path, to_path):
     # Replace placeholders in template
     final_content = template_content.replace("{{ Title }}", title)
     final_content = final_content.replace("{{ Content }}", content)
+    final_content = final_content.replace(f'href="/', f'href="{basepath}')
+    final_content = final_content.replace(f'src="/', f'src="{basepath}')
 
     with open(to_path, 'w') as to_file:
         to_file.write(final_content)
 
     print(f"Wrote generated page to {to_path}")
 
-def generate_pages_resurcivly(from_path, template_path, to_path):
+def generate_pages_recursively(from_path, template_path, to_path, basepath):
 
     print(f"Generating page from {from_path} using template {template_path} to {to_path}")
 
@@ -69,12 +70,12 @@ def generate_pages_resurcivly(from_path, template_path, to_path):
         if os.path.isdir(s):
             os.makedirs(p, exist_ok=True)
             print(f"Created directory {p}")
-            generate_pages_resurcivly(s, template_path, p)
+            generate_pages_recursively(s, template_path, p, basepath)
         else:
             if item.endswith('.md'):
                 to_file_path = os.path.join(to_path, item[:-3] + '.html')
                 print(f"Generating HTML page {to_file_path} from markdown {s}")
-                generate_page(s, template_path, to_file_path)
+                generate_page(s, template_path, to_file_path, basepath)
             else:
                 shutil.copy2(s, p)
                 print(f"Copied {s} to {p}")
