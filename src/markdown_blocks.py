@@ -13,12 +13,12 @@ def markdwon_to_blocks(text):
 
 
 class BlockType(enum.Enum):
-    PARAGRAPH = 1
-    HEADING = 2
-    CODE = 3
-    QUOTE = 4
-    UNORDERED_LIST = 5
-    ORDERED_LIST = 6
+    PARAGRAPH = "paragraph"
+    HEADING = "heading"
+    CODE = "code"
+    QUOTE = "quote"
+    UNORDERED_LIST = "unordered_list"
+    ORDERED_LIST = "ordered_list"
 
 
 
