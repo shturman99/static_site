@@ -1,7 +1,7 @@
 import unittest
 from markdown_blocks import (
 
-    markdwon_to_blocks,
+    markdown_to_blocks,
     block_to_block_type,
     BlockType
     
@@ -24,7 +24,7 @@ this is third blockk
 
 
 """
-        blocks = markdwon_to_blocks(text)
+        blocks = markdown_to_blocks(text)
         self.assertListEqual(
             [
                 "this is plain text without any md.",

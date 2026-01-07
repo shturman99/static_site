@@ -1,6 +1,6 @@
 import re
 import enum
-def markdwon_to_blocks(text):
+def markdown_to_blocks(text):
 
     blocks = list(map(lambda x: x.strip(), text.split("\n\n")))
     out = []    
