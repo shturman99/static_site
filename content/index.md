@@ -8,8 +8,8 @@ In the last decade, high quality cosmological data has greatly improved our unde
 
 My main research includes investigations of physical processes in the Universe at very early epochs as well as at late times. In particular, I study (i) fundamental symmetry tests at very high energies (early epochs of the universe expansion) using available data of astrophysical, cosmological, and particle physics experiments; (ii) gravitational wave signals from the very early universe (inflation, phase transitions); (iii) CMB fluctuations beyond standard cosmological models. I am interested in alternative scenarios to explain the accelerated expansion of the universe, such as modifications of general relativity (especially massive gravity models). From the astrophysics side, I am working on cosmological magnetic fields and the origins, evolution, and observable signatures of primordial turbulence.
 
-For more detaile look in:
-- [Research interest](/reserach-interests/)
+For more details:
+- [Research interest](/research-interests/)
 
 ## Recent Publications
 
