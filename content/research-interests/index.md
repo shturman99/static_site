@@ -1,16 +1,15 @@
 # Research Interests
 
-This page summarizes the current focus areas of the research group.
 
 ## Core Themes
 
-- [Placeholder: Theme 1]
-- [Placeholder: Theme 2]
-- [Placeholder: Theme 3]
+- Early Univeres Grawitational Waves
+- Massive Gravit
+- Primordial Magnetic Fileds
 
 ## Ongoing Projects
 
-- [Placeholder: Project title, one-line summary]
-- [Placeholder: Project title, one-line summary]
+- Massive gravirty detectability for PTA
+- Machine learning applications to the turbulence datasets for recovery of conserved quantities
 
 [Back to Home](/)

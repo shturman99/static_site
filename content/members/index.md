@@ -4,23 +4,26 @@ People in the research group.
 
 ## Faculty
 
-- [Placeholder: Name, role, affiliation]
+- Tina Kahniashvili 
+- Sayan Mandal 
 
 ## Postdoctoral Researchers
 
-- [Placeholder: Name, research area]
+- Salome Mtchedlidze
 
 ## PhD Students
 
-- [Placeholder: Name, research area]
-- [Placeholder: Name, research area]
+- Murman Gurgenidze (CMU)
+- Chris Choi (CMU)
 
 ## MSc / Undergraduate Students
 
-- [Placeholder: Name, project topic]
+- Marcus Bosca 
+- Titus Brock 
+- Dylan McCauley 
+- Abhinav Raghavan 
 
 ## Alumni
 
-- [Placeholder: Name, current position]
 
 [Back to Home](/)
